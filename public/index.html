@@ -4,9 +4,22 @@
         <title>Real Time Chat App</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
+        <!--<link href="css/style.css" rel="stylesheet">-->
     </head>
     <body>
         <h1>Real Time Chat App</h1>
+        <p id="connected"></p>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io();
+
+            socket.on('connect', () => {
+                document.getElementById('connected').innerHTML = 'Connected to server';
+            });
+            socket.on('disconenct', () => {
+                console.log('Disconnected from server');
+            });
+        </script>
     </body>
 </html>
