@@ -8,9 +8,9 @@ socket.on('disconenct', function() {
 });
 
 socket.on('newMessage', function(message) {
-    console.log('newMessage', message);
+    var formattedTime = moment(message.createdAt).format('LT');
     var li = $('<li></li>');
-    li.text(`${message.from}: ${message.text}`);
+    li.text(`${message.from} ${formattedTime}: ${message.text}`);
 
     $('#messages').append(li);
 });
