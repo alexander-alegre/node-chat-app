@@ -9,10 +9,13 @@ socket.on('disconenct', function() {
 
 socket.on('newMessage', function(message) {
     var formattedTime = moment(message.createdAt).format('LT');
-    var li = $('<li></li>');
-    li.text(`${message.from} ${formattedTime}: ${message.text}`);
-
-    $('#messages').append(li);
+    var template = $('#message-template').html();
+    var html = Mustache.render(template, {
+        text: message.text,
+        from: message.from,
+        createdAt: formattedTime
+    });
+    $('#messages').append(html);
 });
 
 
