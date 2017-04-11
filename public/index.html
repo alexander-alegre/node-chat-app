@@ -4,17 +4,23 @@
         <title>Real Time Chat App</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="/css/index.css" rel="stylesheet">
+        <link href="/css/styles.css" rel="stylesheet">
     </head>
-    <body>
-        <h1>Real Time Chat App</h1>
-        <p id="connected"></p>
-        <ol id="messages"></ol>
+    <body class="chat">
+        <div class="chat__sidebar">
+            <h3>People</h3>
+            <div id="users"></div>
+        </div>
+        <div class="chat__main">
+            <ol id="messages" class="chat__messages"></ol>
+            <div class="chat__footer">
+                <form id="message-form">
+                    <input name="message" type="text" placeholder="Message" autofocus autocomplete="off" />
+                    <button on-click="">Send</button>
+                </form>
+            </div>
+        </div>
 
-        <form id="message-form">
-            <input name="message" type="text" placeholder="Message" />
-            <button on-click="">Send</button>
-        </form>
 
 
 

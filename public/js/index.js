@@ -1,7 +1,7 @@
 var socket = io();
 
 socket.on('connect', function() {
-    document.getElementById('connected').innerHTML = 'Connected to server';
+    console.log('connected to server')
 });
 socket.on('disconenct', function() {
     console.log('Disconnected from server');
@@ -20,10 +20,13 @@ socket.on('newMessage', function(message) {
 $('#message-form').on('submit', function(e) {
     e.preventDefault();
 
+    var messageTextbox = $('[name=message]');
+
     socket.emit('createMessage', {
         from: 'User',
-        text: $('[name=message').val()
+        text: messageTextbox.val()
     }, function() {
-
+        messageTextbox.val('');
     });
 });
+
