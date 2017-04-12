@@ -12,6 +12,18 @@ var io = socketIO(server);
 
 app.use(express.static(publicPath));
 
+
+// app.get('/', () => {
+//     app.render('index');
+// });
+
+// app.get('/chat.html', () => {
+//     app.render('../index');
+// });
+
+
+
+
 io.on('connection', (socket) => {
     console.log('new user connected');
 
