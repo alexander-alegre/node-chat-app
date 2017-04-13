@@ -22,7 +22,7 @@ socket.on('connect', function() {
             alert('Display Name and Room Name are required');
             window.location.href = '/';
         } else {
-            // console.log('no errors');
+            params.room.toUpperCase();
         }   
     });
 });
