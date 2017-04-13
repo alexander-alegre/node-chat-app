@@ -35,13 +35,15 @@ io.on('connection', (socket) => {
     });
 
     socket.on('createMessage', (message, callback) => {
-        console.log('createMessage', message);
-        io.emit('newMessage', generateMessage(message.from, message.text));
+        var user = users.getUser(socket.id);
+
+        if (user && isRealString(message.text)) {
+            io.to(user.room).emit('newMessage', generateMessage(user.name, message.text));
+        }
         callback();
     });
 
     socket.on('disconnect', () => {
-        console.log('user has disconnected');
         var user = users.removeUser(socket.id);
         if (user) {
             io.to(user.room).emit('updateUserList', users.getUserList(user.room));
