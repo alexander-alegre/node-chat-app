@@ -14,7 +14,7 @@ var app = express();
 var server = http.createServer(app);
 var io = socketIO(server);
 var users = new Users();
-
+const emoji = require('node-emoji');
 
 app.use(express.static(publicPath));
 
@@ -39,7 +39,7 @@ io.on('connection', (socket) => {
         var user = users.getUser(socket.id);
 
         if (user && isRealString(message.text)) {
-            io.to(user.room).emit('newMessage', generateMessage(user.name, message.text));
+            io.to(user.room).emit('newMessage', generateMessage(user.name, emoji.emojify(message.text)));
         }
         callback();
     });

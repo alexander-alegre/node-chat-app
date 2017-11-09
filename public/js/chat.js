@@ -23,7 +23,7 @@ socket.on('connect', function() {
             window.location.href = '/';
         } else {
             params.room.toUpperCase();
-        }   
+        }
     });
 });
 socket.on('disconnect', function() {
